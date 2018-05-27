@@ -94,6 +94,7 @@
     (\"foo\" \"bar\" \"baz\")
 
   "
+  (check-type width (integer 1))
   (etypecase string-or-strings
     (string (wrap-string string-or-strings width))
     (list (wrap-lines string-or-strings width))))
