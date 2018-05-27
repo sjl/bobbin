@@ -1,6 +1,10 @@
 Bobbin is a simple (50 LOC) word-wrapping library for strings in Common Lisp.
 It depends only on `split-sequence`.
 
+It aims to be simple, work nicely for the majority of cases, and degrade
+gracefully for edge cases.  It is not particularly concerned with speed — if you
+need very high-performance word wrapping Bobbin is not for you.
+
 * **License:** MIT
 * **Documentation:** <http://github.com/sjl/bobbin/> (this `README`)
 * **Mercurial:** <http://bitbucket.org/sjl/bobbin/>
@@ -24,9 +28,6 @@ characters (not including the newline itself).
 
 Philosophy
 ----------
-
-Bobbin is about fifty lines of code.  It aims to be simple, work well most of
-the time, and fail gracefully for edge cases.
 
 Bobbin will try to break lines at whitespace.  It will only break a word in the
 middle if there's no other choice.  It does not try to hyphenate, or parse
