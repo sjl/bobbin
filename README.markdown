@@ -1,3 +1,26 @@
+Bobbin
+======
+
+```
+         .─────────────.
+     _.─'       .       `──.
+  ,─'     .    ( )    .     '─.
+ ╱       ( )    '    ( )       ╲
+;   .     '   ooooo   '     .   :
+:  ( )       ooooooo       ( )  ;
+ ╲  '     .   ooooo   .     '  ╱
+  ╲      ( )    .    ( )      ╱
+  ,'─.    '    ( )    '    ,─'.
+ ╱    `──.      '      _.─'    ╲
+;   .     `───────────'     .   :
+:  ( )       lllllll       ( )  ;
+ ╲  '     .  lllllll  .     '  ╱
+  ╲      ( )    .    ( )      ╱
+   '─.    '    ( )    '    ,─'
+      `──.      '      _.─'
+          `───────────'
+```
+
 Bobbin is a simple (50 LOC) word-wrapping library for strings in Common Lisp.
 It depends only on `split-sequence`.
 
