@@ -15,7 +15,7 @@ test-ccl:
 
 test-ecl:
 	$(heading_printer) roman 'ECL'
-	ecl --load test/run.lisp
+	ecl -load test/run.lisp
 
 test-abcl:
 	$(heading_printer) broadway 'ABCL'
