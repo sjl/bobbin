@@ -18,8 +18,8 @@ Bobbin
         `───────────'
 ```
 
-Bobbin is a simple (50 LOC) word-wrapping library for strings in Common Lisp.
-It depends only on `split-sequence`.
+Bobbin is a simple word-wrapping library for strings in Common Lisp.  It depends
+only on `split-sequence`.
 
 It aims to be simple, work nicely for the majority of cases, and degrade
 gracefully for edge cases.  It is not particularly concerned with speed — if you
@@ -46,11 +46,10 @@ The simplest way to use Bobbin is to pass it a string:
 Every line in the string returned by `wrap` will contain at most `width`
 characters (not including the newline itself).
 
-Philosophy
-----------
+### Philosophy
 
 Bobbin will try to break lines at whitespace.  It will only break a word in the
-middle if there's no other choice.  It does not try to hyphenate, or parse
+middle if there's no other choice.  It does not try to hyphenate or parse
 hyphenation:
 
     (bobbin:wrap "This is a test of Bobbin's line-breaking." 10)
@@ -74,8 +73,7 @@ broken lines, but this may be added in the future:
 
 Whitespace between words will be preserved, unless a line is broken at that
 point.  This does the right thing for those of us who put two spaces after
-a period, [as God
-intended](https://web.archive.org/web/20171125050610/http://www.heracliteanriver.com/?p=324):
+a period, [as God intended](https://web.archive.org/web/20171125050610/http://www.heracliteanriver.com/?p=324):
 
     (bobbin:wrap "there  are  two  spaces  between  these  words" 12)
     "there  are
@@ -91,8 +89,7 @@ line breaks, never remove them:
     bar baz
     frob"
 
-Lists
------
+### Lists
 
 For convenience, you can also pass `wrap` a list of strings.  Each string is
 treated as a separate line and wrapped as described above.  The results are
@@ -108,6 +105,26 @@ characters long:
      "another"
      "line")
 
+The strings in the list may contain newlines themselves — they will be split and
+the result will still be one flat list of lines.  You can use this to trick
+Bobbin into returning a list even when you're just passing it one string, by
+wrapping the input in a list:
+
+    (defparameter *foo* (format nil "foo and bar~%cat and mouse"))
+
+    (bobbin:wrap *foo* 8)
+    "foo and
+    bar
+    cat and
+    mouse"
+
+    (bobbin:wrap (list *foo*) 8)
+    ("foo and"
+     "bar"
+     "cat and"
+     "mouse")
+
+
 TODO
 ----
 
@@ -116,3 +133,4 @@ TODO
 * Handle wide characters.
 * `unwrap` function to make writing paragraphs easier.
 * Maybe reindent broken lines?
+* Add `skip-p` argument to allow raw lines.
