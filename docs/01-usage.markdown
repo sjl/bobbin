@@ -79,6 +79,25 @@ characters long:
      "another"
      "line")
 
+The strings in the list may contain newlines themselves — they will be split and
+the result will still be one flat list of lines.  You can use this to trick
+Bobbin into returning a list even when you're just passing it one string, by
+wrapping the input in a list:
+
+    (defparameter *foo* (format nil "foo and bar~%cat and mouse"))
+
+    (bobbin:wrap *foo* 8)
+    "foo and
+    bar
+    cat and
+    mouse"
+
+    (bobbin:wrap (list *foo*) 8)
+    ("foo and"
+     "bar"
+     "cat and"
+     "mouse")
+
 Possible Future Features
 ------------------------
 
@@ -90,3 +109,4 @@ Bobbin aims to be simple, but may grow a bit more functionality in the future
 * Handle wide characters.
 * `unwrap` function to make writing paragraphs easier.
 * Maybe reindent broken lines?
+* Add `skip-p` argument to allow raw lines.
