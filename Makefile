@@ -34,7 +34,8 @@ docs/build/index.html: $(docfiles) $(apidocs) docs/title
 docs: docs/build/index.html
 
 pubdocs: docs
-	hg -R ~/src/sjl.bitbucket.org pull -u
-	rsync --delete -a ./docs/build/ ~/src/sjl.bitbucket.org/bobbin
-	hg -R ~/src/sjl.bitbucket.org commit -Am 'bobbin: Update site.'
-	hg -R ~/src/sjl.bitbucket.org push
+	hg -R ~/src/docs.stevelosh.com pull -u upstream
+	rsync --delete -a ./docs/build/ ~/src/docs.stevelosh.com/bobbin
+	hg -R ~/src/docs.stevelosh.com commit -Am 'bobbin: Update site.'
+	hg -R ~/src/docs.stevelosh.com push upstream
+	hg -R ~/src/docs.stevelosh.com push
