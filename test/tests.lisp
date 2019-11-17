@@ -11,11 +11,14 @@
 (defun run-tests ()
   (1am:run))
 
+(defun f (&rest args)
+  (apply #'format nil args))
+
 (defmacro check (input width result)
   (if (stringp input)
     `(is (string= (format nil ,result)
-                  (bobbin:wrap (format nil ,input) ,width)))
-    `(is (equal ',result (bobbin:wrap ',input ,width)))))
+                  (bobbin:wrap (f ,input) ,width)))
+    `(is (equal ',result (bobbin:wrap (mapcar #'f ',input) ,width)))))
 
 
 ;;;; Tests --------------------------------------------------------------------
@@ -62,7 +65,9 @@
 
 (define-test indentation
   (check "   foo~% bar" 50 "   foo~% bar")
-  (check "            foo          bar" 3 "foo~%bar"))
+  (check "            foo          bar" 3 "foo~%bar")
+  (check "  foo~%  bar" 5 "  foo~%  bar")
+  (check ("  foo~%  bar") 5 ("  foo" "  bar")))
 
 (define-test lists
   (check ("foo bar baz")

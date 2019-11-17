@@ -50,9 +50,18 @@
 
 (defun wrap-lines (strings width)
   "Wrap a list of `strings` to `width`, returning a list of strings."
-  (mapcan (lambda (string)
-            (split-sequence:split-sequence #\newline (wrap-line string width)))
-          strings))
+  ;; This is mildly tricky because we want to correctly handle indented lines
+  ;; inside of multiline strings inside the list.
+  (let ((lines (mapcan
+                 ;; Split and flatten any multiline strings in the list first.
+                 (lambda (string)
+                   (split-sequence:split-sequence #\newline string))
+                 strings)))
+    (mapcan
+      ;; Then wrap each string in the list and flatten the results.
+      (lambda (line)
+        (split-sequence:split-sequence #\newline (wrap-line line width)))
+      lines)))
 
 (defun wrap-string (string width)
   "Wrap a multi-line string, returning a multi-line string."
