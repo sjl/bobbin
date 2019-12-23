@@ -8,6 +8,6 @@ need very high-performance word wrapping Bobbin is not for you.
 Bobbin can be installed with Quicklisp: `(ql:quickload :bobbin)`.
 
 * **License:** MIT
-* **Documentation:** <https://sjl.bitbucket.io/bobbin/>
-* **Mercurial:** <http://bitbucket.org/sjl/bobbin/>
+* **Documentation:** <https://docs.stevelosh.com/bobbin/>
+* **Mercurial:** <https://hg.sr.ht/~sjl/bobbin/>
 * **Git:** <http://github.com/sjl/bobbin/>

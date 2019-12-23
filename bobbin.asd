@@ -1,7 +1,7 @@
 (asdf:defsystem :bobbin
   :description "Simple (word) wrapping utilities for strings."
   :author "Steve Losh <steve@stevelosh.com>"
-  :homepage "https://sjl.bitbucket.io/bobbin/"
+  :homepage "https://docs.stevelosh.com/bobbin/"
 
   :license "MIT"
   :version "1.0.1"
