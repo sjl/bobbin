@@ -9,5 +9,5 @@ Bobbin can be installed with Quicklisp: `(ql:quickload :bobbin)`.
 
 * **License:** MIT
 * **Documentation:** <https://docs.stevelosh.com/bobbin/>
-* **Mercurial:** <https://hg.sr.ht/~sjl/bobbin/>
+* **Mercurial:** <https://hg.stevelosh.com/bobbin/>
 * **Git:** <http://github.com/sjl/bobbin/>
